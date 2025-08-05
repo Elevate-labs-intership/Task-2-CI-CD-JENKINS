@@ -59,7 +59,7 @@ terraform apply
 **Playbooks**:
 
 #### installation.yaml
-- Installs Java JDK 17 (Jenkins requirement)
+- Installs Java JDK 21 (Jenkins requirement)
 - Adds Jenkins repository and GPG key
 - Installs and starts Jenkins service
 - Retrieves initial admin password
