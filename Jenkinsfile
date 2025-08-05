@@ -8,6 +8,13 @@ pipeline {
     }
     
     stages {
+        stage('Cleanup') {
+            steps {
+                sh 'docker system prune -f'
+                sh 'df -h'
+            }
+        }
+        
         stage('Fetch code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Elevate-labs-intership/Task-2-CI-CD-JENKINS.git'
