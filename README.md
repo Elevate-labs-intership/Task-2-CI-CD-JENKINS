@@ -82,7 +82,7 @@ Configuration/
 ```bash
 cd Configuration/
 ansible-playbook installation/installation.yaml
-ansible-playbook docker-install.yaml
+ansible-playbook installation/docker-install.yaml
 ```
 
 ## CI/CD Pipeline
