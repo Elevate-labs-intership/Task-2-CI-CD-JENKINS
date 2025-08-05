@@ -5,6 +5,13 @@ resource "aws_instance" "Jenkins" {
   availability_zone      = var.zone
   vpc_security_group_ids = [aws_security_group.Jenkins.id]
   count                  = 1
+  
+  root_block_device {
+    volume_type = "gp3"
+    volume_size = 30
+    encrypted   = true
+  }
+  
   tags = {
     Name    = "Jenkins"
     Project = "Infrastructure"
