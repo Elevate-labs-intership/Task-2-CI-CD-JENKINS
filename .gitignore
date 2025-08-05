@@ -1,0 +1,9 @@
+.terraform
+# Local .terraform directory
+.terraform.lock.hcl
+# Dependency lock file for Terraform
+*.tfstate
+# Terraform state files
+*.tfstate.*
+# Backup files for Terraform state
+ansible.log
