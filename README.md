@@ -160,7 +160,7 @@ cd Configuration/
 ansible-playbook installation/installation.yaml
 
 # Install Docker
-ansible-playbook docker-install.yaml
+ansible-playbook installation/docker-install.yaml
 ```
 
 ### Step 3: Jenkins Setup
