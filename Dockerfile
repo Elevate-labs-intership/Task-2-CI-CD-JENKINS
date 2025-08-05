@@ -12,7 +12,7 @@ RUN git clone https://github.com/Elevate-labs-intership/Task-1-CI-CD-GITOPS.git
 
 # Install dependencies and build
 WORKDIR /usr/src/app/Task-1-CI-CD-GITOPS
-RUN npm ci --only=production && npm run build
+RUN npm install && npm run build
 
 # ----------- Runtime Stage -----------
 FROM node:slim
@@ -26,4 +26,4 @@ COPY --from=build /usr/src/app/Task-1-CI-CD-GITOPS/node_modules ./node_modules
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
