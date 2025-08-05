@@ -1,29 +1,31 @@
-# Task-2 CI-CD Jenkins
+#Task-2 ci-cd-jenkins
 
 # ----------- Build Stage -----------
 FROM node:slim AS build
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y git 
 
 WORKDIR /usr/src/app
 
-# Clone the repository
-RUN git clone https://github.com/Elevate-labs-intership/Task-1-CI-CD-GITOPS.git
+# Clone the private repo using forwarded SSH key
 
-# Install dependencies and build
-WORKDIR /usr/src/app/Task-1-CI-CD-GITOPS
-RUN npm install && npm run build
+
+RUN  git clone https://github.com/Elevate-labs-intership/Task-2-CI-CD-JENKINS.git
+
+
+# Install dependencies and build the project
+WORKDIR /usr/src/app/Task-2-CI-CD-JENKINS
+RUN npm install --legacy-peer-deps && npm run build
+
 
 # ----------- Runtime Stage -----------
 FROM node:slim
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
-# Copy only necessary files
-COPY --from=build /usr/src/app/Task-1-CI-CD-GITOPS/.next ./.next
-COPY --from=build /usr/src/app/Task-1-CI-CD-GITOPS/package*.json ./
-COPY --from=build /usr/src/app/Task-1-CI-CD-GITOPS/node_modules ./node_modules
+# Copy built project from previous stage
+COPY --from=build /usr/src/app/Task-2-CI-CD-JENKINS ./
 
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
+# Start the app
+CMD ["npm", "run","start"]
