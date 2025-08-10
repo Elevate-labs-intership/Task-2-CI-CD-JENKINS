@@ -12,7 +12,7 @@ RUN git clone https://github.com/Elevate-labs-intership/Task-2-CI-CD-JENKINS.git
 
 # Install dependencies and build
 WORKDIR /usr/src/app/Task-2-CI-CD-JENKINS
-RUN npm install && npm run build
+RUN npm install --legacy-peer-deps && npm run build
 
 # ----------- Runtime Stage -----------
 FROM node:slim
